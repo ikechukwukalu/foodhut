@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ProductIngredient extends Model
 {
@@ -16,4 +17,9 @@ class ProductIngredient extends Model
         'ingredient_id',
         'quantity'
     ];
+
+    public function reorderNotifications(): HasMany
+    {
+        return $this->hasMany(ReorderNotification::class);
+    }
 }
