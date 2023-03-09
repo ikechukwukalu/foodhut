@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('ingredients', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->unique();
+            $table->string('quantity_available');
+            $table->string('quantity_supplied');
+            $table->string('quantity_stocked');
+            $table->timestamp('last_reorder_at')->default(\DB::raw("CURRENT_TIMESTAMP()"));
+            $table->softDeletes();
             $table->timestamps();
         });
     }
