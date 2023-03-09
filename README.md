@@ -19,12 +19,6 @@ php artisan cache:clear
 php artisan queue:work
 ```
 
-### Run npm server
-
-```shell
-npm install && npm run dev
-```
-
 ### Run development server
 
 ```shell

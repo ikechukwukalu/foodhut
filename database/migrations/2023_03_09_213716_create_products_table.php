@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ingredients', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('merchant_id')->constrained('merchants');
             $table->string('name')->unique();
-            $table->string('quantity_available');
-            $table->string('quantity_supplied');
-            $table->string('quantity_stocked');
-            $table->timestamp('last_reorder_at')->default(\DB::raw("CURRENT_TIMESTAMP()"));
             $table->softDeletes();
             $table->timestamps();
         });
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ingredients');
+        Schema::dropIfExists('products');
     }
 };

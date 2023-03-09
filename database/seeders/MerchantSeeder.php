@@ -2,22 +2,23 @@
 
 namespace Database\Seeders;
 
-use App\Models\Product;
+use App\Models\Merchant;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ProductSeeder extends Seeder
+class MerchantSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Product::firstOrCreate(
-            ['name' => 'Burger'],
+        Merchant::firstOrCreate(
+            ['email' => 'testmerchant@xyz.com'],
             [
-                'name' => 'Burger',
-                'merchant_id' => 1
+                'name' => 'Test Merchant',
+                'email' => 'testmerchant@xyz.com'
             ]);
     }
+
 }

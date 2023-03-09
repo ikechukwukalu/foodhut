@@ -6,11 +6,9 @@ use App\Http\Requests\LoginRequest;
 use App\Services\LoginService;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Response;
 
 class LoginController extends Controller
 {
-
 
     /**
      * User login.

@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('reorder_notifications', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->softDeletes();
+            $table->foreignId('product_ingredient_id')->constrained('product_ingredients');
+            $table->string('quantity');
+            $table->timestamp('last_reorder_at');
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('reorder_notifications');
     }
 };

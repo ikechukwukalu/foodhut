@@ -14,10 +14,10 @@ class OrderService
      * @param  \App\Http\Requests\OrderRequest  $request
      * @return ?array
      */
-    public static function handle(OrderRequest $request): ?array
+    public static function handleOrder(OrderRequest $request): ?array
     {
         $validated = $request->validated();
 
-        return null;
+        return $validated;
     }
 }

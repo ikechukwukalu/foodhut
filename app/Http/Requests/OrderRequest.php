@@ -23,9 +23,20 @@ class OrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'products' => 'require|array:product_id,quantity',
-            'products.*.product_id' => 'require|integer|exists:products,id',
-            'products.*.quantity' => 'require|integer',
+            'products' => 'required|array:product_id,quantity',
+            'products.product_id' => 'required|integer|exists:products,id',
+            'products.quantity' => 'required|integer',
+        ];
+    }
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'products.product_id' => 'The selected product does not exist',
         ];
     }
 }
