@@ -1,0 +1,63 @@
+name: 'Unauthenticated APIs'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/login
+    metadata:
+      groupName: 'Unauthenticated APIs'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'User login.'
+      description: 'Make sure to retrieve <small class="badge badge-blue">access_token</small> after login for User authentication'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'The email of the user.'
+        required: true
+        example: testuser@foodhut.com
+        type: string
+        custom: []
+      password:
+        name: password
+        description: 'The password of the user is 12345678.'
+        required: true
+        example: '12345678'
+        type: string
+        custom: []
+    cleanBodyParameters:
+      email: testuser@foodhut.com
+      password: '12345678'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+          "status": "success",
+          "status_code": 200,
+          "data": {
+               "message": string
+               "access_token": string
+           }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

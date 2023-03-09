@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +17,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+/**
+ * @group Unauthenticated APIs
+ *
+ * APIs that do not require User authentication
+ */
+
+/**
+ * @group Authenticated APIs
+ *
+ * APIs that require User authentication
+ */
+
+Route::post('auth/login', [LoginController::class, 'login'])->name('login');
+
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('order/product', [OrderController::class, 'order'])->name('order');
+    Route::post('auth/logout', [LogoutController::class, 'logout'])->name('logout');
+    Route::post('auth/logout-from-all-sessions', [LogoutController::class, 'logoutFromAllSessions'])->name('logoutFromAllSessions');
 });
