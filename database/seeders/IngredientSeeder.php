@@ -20,7 +20,7 @@ class IngredientSeeder extends Seeder
                 'quantity_available' => '20000',
                 'quantity_supplied' => '20000',
                 'quantity_stocked' => '20000',
-                'merchant_id' => 1
+                'user_id' => 1
             ]);
 
         Ingredient::firstOrCreate(
@@ -30,7 +30,7 @@ class IngredientSeeder extends Seeder
                 'quantity_available' => '5000',
                 'quantity_supplied' => '5000',
                 'quantity_stocked' => '5000',
-                'merchant_id' => 1
+                'user_id' => 1
             ]);
 
         Ingredient::firstOrCreate(
@@ -40,7 +40,7 @@ class IngredientSeeder extends Seeder
                 'quantity_available' => '1000',
                 'quantity_supplied' => '1000',
                 'quantity_stocked' => '1000',
-                'merchant_id' => 1
+                'user_id' => 1
             ]);
     }
 }

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('product_id')->constrained('products');
             $table->string('quantity');
+            $table->tinyInteger('is_successful')->default(true);
             $table->softDeletes();
             $table->timestamps();
         });

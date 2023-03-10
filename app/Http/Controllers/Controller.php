@@ -20,7 +20,7 @@ class Controller extends BaseController
      * @param array $data
      * @return \Illuminate\Http\JsonResponse
      */
-    public function httpJsonResponse(string $status, int $status_code, ?array $data = null): JsonResponse
+    public function httpJsonResponse(string $status, int $status_code, mixed $data = null): JsonResponse
     {
         return Response::json([
             'status' => $status,
@@ -36,7 +36,7 @@ class Controller extends BaseController
      */
     public function unknownErrorJsonResponse(): JsonResponse
     {
-        return $this->httpJsonResponse($request, trans('general.fail'), 422,
+        return $this->httpJsonResponse(trans('general.fail'), 422,
                 ['message' => trans('general.unknown_error')]);
     }
 }

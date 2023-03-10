@@ -11,15 +11,15 @@ class ReorderNotification extends Model
     use HasFactory;
 
     protected $fillable = [
-        'product_ingredient_id',
+        'ingredient_id',
         'quantity_left',
         'last_reorder_at'
     ];
 
 
 
-    public function productIngredient(): BelongsTo
+    public function ingredient(): BelongsTo
     {
-        return $this->BelongsTo(ProductIngredient::class);
+        return $this->BelongsTo(Ingredient::class);
     }
 }

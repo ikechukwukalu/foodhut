@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class ReorderNotification extends Notification
+class ReorderLevelNotification extends Notification
 {
     use Queueable;
 

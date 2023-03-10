@@ -17,7 +17,8 @@ class MerchantSeeder extends Seeder
             ['email' => 'testmerchant@xyz.com'],
             [
                 'name' => 'Test Merchant',
-                'email' => 'testmerchant@xyz.com'
+                'email' => 'testmerchant@xyz.com',
+                'is_merchant' => true
             ]);
     }
 

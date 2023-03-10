@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\Ingredient;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -10,16 +11,20 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class Orders
+class ReorderLevel
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public Ingredient $ingredient;
+
     /**
      * Create a new event instance.
+     *
+     * @param \App\Models\Ingredient $ingredient
      */
-    public function __construct()
+    public function __construct(Ingredient $ingredient)
     {
-        //
+        $this->ingredient = $ingredient;
     }
 
     /**
