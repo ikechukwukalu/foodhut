@@ -23,7 +23,7 @@ class Ingredient extends Model
 
     public function merchant(): BelongsTo
     {
-        return $this->BelongsTo(Merchant::class);
+        return $this->BelongsTo(Merchant::class, 'user_id');
     }
 
     public function products(): BelongsToMany

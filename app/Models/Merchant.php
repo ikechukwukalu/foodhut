@@ -26,6 +26,11 @@ class Merchant extends User
         $this->attributes['is_merchant'] = true;
     }
 
+    public function order(): HasMany
+    {
+        return $this->hasMany(Order::class, 'merchant_id');
+    }
+
     public function ingredients(): HasMany
     {
         return $this->hasMany(Ingredient::class, 'user_id');
@@ -39,5 +44,10 @@ class Merchant extends User
     public function productIngredients(): HasMany
     {
         return $this->hasMany(ProductIngredient::class, 'user_id');
+    }
+
+    public function reorderNotifications(): HasMany
+    {
+        return $this->hasMany(ReorderNotification::class);
     }
 }

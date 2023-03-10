@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('reorder_notifications', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
             $table->foreignId('ingredient_id')->constrained('ingredients');
             $table->string('quantity_left');
             $table->timestamp('last_reorder_at');

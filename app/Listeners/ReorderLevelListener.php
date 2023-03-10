@@ -36,6 +36,7 @@ class ReorderLevelListener implements ShouldQueue
         }
 
         ReorderNotification::create([
+            'user_id' => $event->ingredient->user_id,
             'ingredient_id' => $event->ingredient->id,
             'quantity_left' => $event->ingredient->quantity_available,
             'last_reorder_at' => $event->ingredient->last_reorder_at
