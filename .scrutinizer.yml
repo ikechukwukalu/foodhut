@@ -9,11 +9,7 @@ build:
                 php: 8.1.2
             tests:
                 override:
-                    - php ./vendor/bin/phpunit --configuration phpunit.xml --testsuite scrutinizer
-                    -
-                        command: phpcs-run
-                        use_website_config: true
-        tests: true
+                    - php-scrutinizer-run
 checks:
     php: true
 coding_style:
