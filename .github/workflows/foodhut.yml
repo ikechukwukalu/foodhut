@@ -29,8 +29,8 @@ jobs:
       mysql:
         image: mariadb:10.4.27
         env:
-          MARIADB_ROOT_PASSWORD: ${{ secrets.DB_STAGING_PASSWORD }}
-          MARIADB_DATABASE: ${{ secrets.DB_STAGING_NAME }}
+          MARIADB_ROOT_PASSWORD: 12345678
+          MARIADB_DATABASE: foodhut
         ports:
           - 3307:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
@@ -53,8 +53,8 @@ jobs:
           DB_CONNECTION: mysql
           DB_PORT: 3307
           DB_USER: root
-          DB_PASSWORD: ${{ secrets.DB_STAGING_PASSWORD }}
-          DB_DATABASE: ${{ secrets.DB_STAGING_NAME }}
+          DB_PASSWORD: 12345678
+          DB_DATABASE: foodhut
         run: |
           php artisan migrate --seed
           php artisan test
