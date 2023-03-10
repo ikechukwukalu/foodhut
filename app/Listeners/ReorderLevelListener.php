@@ -42,7 +42,7 @@ class ReorderLevelListener implements ShouldQueue
         ]);
 
         if ($user = Merchant::find($event->ingredient->user_id)) {
-            $user->notify(new ReorderLevelNotification());
+            $user->notify(new ReorderLevelNotification($user, $event->ingredient));
         }
     }
 }

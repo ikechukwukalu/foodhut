@@ -36,7 +36,7 @@ class OrderRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'products.product_id' => 'The selected product does not exist',
+            'products.product_id' => trans('order.no_product'),
         ];
     }
 }

@@ -32,7 +32,7 @@ class OrderService
         $productIDs = self::filterProductIDs($validated);
 
         if (!$products = self::getProducts($productIDs)) {
-            return ['fail', 422, ['message' => 'No product was found']];
+            return ['fail', 422, ['message' => trans('order.no_product')]];
         }
 
         $orders = $products->map(function(Product $product) {
@@ -42,27 +42,57 @@ class OrderService
         return $orders;
     }
 
+    /**
+     * Add Order To Collection.
+     *
+     * @param array $validated
+     * @return void
+     */
     private static function addOrderToCollection(array $validated): void
     {
         self::$orderCollection = collect([$validated['products']]);
     }
 
+    /**
+     * Filter ProductIDs.
+     *
+     * @param array $validated
+     * @return array
+     */
     private static function filterProductIDs(array $validated): array
     {
         self::addOrderToCollection($validated);
         return explode(",", self::$orderCollection->implode('product_id', ', '));
     }
 
+    /**
+     * Get Products.
+     *
+     * @param array $productIDs
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
     private static function getProducts(array $productIDs): ?EloquentCollection
     {
         return Product::whereIn('id', $productIDs)->get();
     }
 
+    /**
+     * Get Order Row.
+     *
+     * @param \App\Models\Product $product
+     * @return array
+     */
     private static function getOrderRow(Product $product): array
     {
         return self::$orderCollection->firstWhere('product_id', $product->id);
     }
 
+    /**
+     * Get Product Ingredients.
+     *
+     * @param \App\Models\Product $product
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
     private static function getProductIngredients(Product $product): ?EloquentCollection
     {
         $row = self::getOrderRow($product);
@@ -83,6 +113,13 @@ class OrderService
         return $ingredients;
     }
 
+    /**
+     * Get Product Ingredients.
+     *
+     * @param \App\Models\Product $product
+     * @param \bool $status
+     * @return \App\Models\Order
+     */
     private static function saveOrder(Product $product, bool $status = true): Order
     {
         $row = self::getOrderRow($product);
@@ -95,6 +132,12 @@ class OrderService
         ]);
     }
 
+    /**
+     * Process Order.
+     *
+     * @param \App\Models\Product $product
+     * @return \App\Models\Order
+     */
     private static function processOrder(Product $product): Order
     {
         $ingredients = self::getProductIngredients($product);
@@ -110,6 +153,13 @@ class OrderService
         return self::saveOrder($product);
     }
 
+    /**
+     * Update Ingredient Quantity.
+     *
+     * @param \App\Models\Product $product
+     * @param \App\Models\Ingredient $ingredient
+     * @return void
+     */
     private static function updateIngredientQuantity(Product $product, Ingredient $ingredient): void
     {
         $row = self::getOrderRow($product);
