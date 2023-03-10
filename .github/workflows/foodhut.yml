@@ -47,7 +47,9 @@ jobs:
           extension-csv: mbstring, bcmath
       - name: "Checkout code"
         uses: "actions/checkout@v3"
-      - name: Composer install
+      - name: "Composer install"
         run: composer install
+      - name: "Run Migration"
+        run: "php artisan migrate --seed"
       - name: "Execute unit tests"
         run: "php artisan test"

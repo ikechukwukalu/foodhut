@@ -24,8 +24,8 @@ class OrderRequest extends FormRequest
     {
         return [
             'products' => 'required|array:product_id,quantity',
-            'products.product_id' => 'required|integer|exists:products,id',
-            'products.quantity' => 'required|integer',
+            'products.product_id' => 'required|integer|gt:0|exists:products,id',
+            'products.quantity' => 'required|integer|gt:0',
         ];
     }
     /**

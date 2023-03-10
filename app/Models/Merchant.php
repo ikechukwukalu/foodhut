@@ -28,16 +28,16 @@ class Merchant extends User
 
     public function ingredients(): HasMany
     {
-        return $this->hasMany(Ingredient::class);
+        return $this->hasMany(Ingredient::class, 'user_id');
     }
 
     public function products(): HasMany
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class, 'user_id');
     }
 
     public function productIngredients(): HasMany
     {
-        return $this->hasMany(ProductIngredient::class);
+        return $this->hasMany(ProductIngredient::class, 'user_id');
     }
 }

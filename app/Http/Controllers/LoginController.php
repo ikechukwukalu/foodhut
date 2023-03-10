@@ -36,6 +36,7 @@ class LoginController extends Controller
             return $this->httpJsonResponse($status, 200, $data);
         }
 
-        return $this->unknownErrorJsonResponse();
+        $status = trans('general.fail');
+        return $this->httpJsonResponse($status, 401, ['message' => trans('auth.failed')]);
     }
 }
