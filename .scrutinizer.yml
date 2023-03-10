@@ -10,6 +10,10 @@ build:
             tests:
                 override:
                     - php ./vendor/bin/phpunit --configuration phpunit.xml --testsuite scrutinizer
+                    -
+                        command: phpcs-run
+                        use_website_config: true
+        tests: true
 checks:
     php: true
 coding_style:
