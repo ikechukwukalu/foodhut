@@ -1,7 +1,7 @@
 # Food Hut
 
-<!-- [![Quality Score](https://img.shields.io/scrutinizer/quality/g/ikechukwukalu/foodhut/main?style=flat-square)](https://scrutinizer-ci.com/g/ikechukwukalu/foodhut/)
-[![Github Workflow Status](https://img.shields.io/github/actions/workflow/status/ikechukwukalu/foodhut/foodhut.yml?branch=main&style=flat-square)](https://github.com/ikechukwukalu/foodhut/actions/workflows/foodhut.yml) -->
+[![Quality Score](https://img.shields.io/scrutinizer/quality/g/ikechukwukalu/foodhut/main?style=flat-square)](https://scrutinizer-ci.com/g/ikechukwukalu/foodhut/)
+[![Github Workflow Status](https://img.shields.io/github/actions/workflow/status/ikechukwukalu/foodhut/foodhut.yml?branch=main&style=flat-square)](https://github.com/ikechukwukalu/foodhut/actions/workflows/foodhut.yml)
 
 This is a sample REST API that returns JSON as a response.
 
