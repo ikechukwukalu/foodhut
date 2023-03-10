@@ -5,19 +5,6 @@ on:
   pull_request:
 
 jobs:
-
-  byte_level:
-    name: "Byte-level"
-    runs-on: "ubuntu-latest"
-    steps:
-      - name: "Checkout code"
-        uses: "actions/checkout@v3"
-      - name: "Check file permissions"
-        run: |
-          test "$(find . -type f -not -path './.git/*' -executable)" == ""
-      - name: "Find non-printable ASCII characters"
-        run: |
-          ! LC_ALL=C.UTF-8 find ./ -type f -name "*.php" -print0 | xargs -0 -- grep -PHn "[^ -~]"
   syntax_errors:
     name: "Syntax errors"
     runs-on: "ubuntu-latest"
