@@ -44,11 +44,11 @@ class Ingredient extends Model
             ->exists();
     }
 
-    public function isNotDueForReorder(): bool
+    public function isDueForReorder(): bool
     {
         $half = $this->quantity_stocked / 2;
         $diff = $this->quantity_stocked - $this->quantity_available;
 
-        return $half > $diff;
+        return $half <= $diff;
     }
 }

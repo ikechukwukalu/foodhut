@@ -31,7 +31,7 @@ class ReorderLevelListener implements ShouldQueue
             return;
         }
 
-        if ($event->ingredient->isNotDueForReorder()) {
+        if (!$event->ingredient->isDueForReorder()) {
             return;
         }
 
