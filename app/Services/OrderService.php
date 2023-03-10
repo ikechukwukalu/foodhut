@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderService
 {
-
     private static User $user;
     private static Collection $orderCollection;
 
