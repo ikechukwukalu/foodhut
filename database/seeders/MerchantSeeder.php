@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\Merchant;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class MerchantSeeder extends Seeder
 {
@@ -18,7 +20,10 @@ class MerchantSeeder extends Seeder
             [
                 'name' => 'Test Merchant',
                 'email' => 'testmerchant@xyz.com',
-                'is_merchant' => true
+                'email_verified_at' => now(),
+                'password' => Hash::make(Str::random(10)),
+                'remember_token' => Str::random(10),
+                'is_merchant' => true,
             ]);
     }
 

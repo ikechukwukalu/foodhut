@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Merchant;
 use App\Models\Product;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -13,11 +14,13 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
+        $merchant = Merchant::merchant()->first();
+
         Product::firstOrCreate(
             ['name' => 'Burger'],
             [
                 'name' => 'Burger',
-                'user_id' => 1
+                'user_id' => $merchant->id
             ]);
     }
 }

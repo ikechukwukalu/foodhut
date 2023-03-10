@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('product_ingredients', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
             $table->foreignId('product_id')->constrained('products');
             $table->foreignId('ingredient_id')->constrained('ingredients');
             $table->string('quantity');

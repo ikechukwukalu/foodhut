@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Ingredient;
+use App\Models\Merchant;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,6 +14,8 @@ class IngredientSeeder extends Seeder
      */
     public function run(): void
     {
+        $merchant = Merchant::merchant()->first();
+
         Ingredient::firstOrCreate(
             ['name' => 'Beef'],
             [
@@ -20,7 +23,7 @@ class IngredientSeeder extends Seeder
                 'quantity_available' => '20000',
                 'quantity_supplied' => '20000',
                 'quantity_stocked' => '20000',
-                'user_id' => 1
+                'user_id' => $merchant->id
             ]);
 
         Ingredient::firstOrCreate(
@@ -30,7 +33,7 @@ class IngredientSeeder extends Seeder
                 'quantity_available' => '5000',
                 'quantity_supplied' => '5000',
                 'quantity_stocked' => '5000',
-                'user_id' => 1
+                'user_id' => $merchant->id
             ]);
 
         Ingredient::firstOrCreate(
@@ -40,7 +43,7 @@ class IngredientSeeder extends Seeder
                 'quantity_available' => '1000',
                 'quantity_supplied' => '1000',
                 'quantity_stocked' => '1000',
-                'user_id' => 1
+                'user_id' => $merchant->id
             ]);
     }
 }

@@ -16,8 +16,6 @@ class ReorderNotification extends Model
         'last_reorder_at'
     ];
 
-
-
     public function ingredient(): BelongsTo
     {
         return $this->BelongsTo(Ingredient::class);

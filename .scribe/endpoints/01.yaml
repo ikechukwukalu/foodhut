@@ -31,6 +31,9 @@ endpoints:
           -
             product_id: 1
             quantity: 2
+          -
+            product_id: 1
+            quantity: 2
         type: 'object[]'
         custom: []
       products.product_id:
@@ -49,6 +52,9 @@ endpoints:
         custom: []
     cleanBodyParameters:
       products:
+        -
+          product_id: 1
+          quantity: 2
         -
           product_id: 1
           quantity: 2

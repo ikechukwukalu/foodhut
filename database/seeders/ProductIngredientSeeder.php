@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Ingredient;
+use App\Models\Merchant;
 use App\Models\Product;
 use App\Models\ProductIngredient;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -23,9 +24,10 @@ class ProductIngredientSeeder extends Seeder
     {
         $product = Product::firstOrCreate(['name' => 'Burger'],
                     ['name' => 'Burger']);
+        $merchant = Merchant::merchant()->first();
 
         Ingredient::all()
-        ->map(function(Ingredient $ingredient) use ($product) {
+        ->map(function(Ingredient $ingredient) use ($product, $merchant) {
             if ($product->ingredients()
                 ->wherePivot('ingredient_id', $ingredient->id)
                 ->exists())
@@ -35,7 +37,8 @@ class ProductIngredientSeeder extends Seeder
 
             $product->ingredients()->attach($ingredient->id,
                 ['quantity' =>
-                    self::PRODUCT_INGREDIENTS[strtolower($ingredient->name)]
+                    self::PRODUCT_INGREDIENTS[strtolower($ingredient->name)],
+                    'user_id' => $merchant->id
                 ]);
         });
     }
