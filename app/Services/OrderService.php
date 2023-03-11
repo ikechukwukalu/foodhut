@@ -84,7 +84,14 @@ class OrderService
      */
     private static function getOrderRow(Product $product): array
     {
-        return self::$orderCollection->firstWhere('product_id', $product->id);
+        $row = ['product_id' => $product->id, 'quantity' => 0];
+        $orderRows = self::$orderCollection->where('product_id', $product->id);
+
+        foreach ($orderRows as $orderRow) {
+            $row['quantity'] += $orderRow['quantity'];
+        }
+
+        return $row;
     }
 
     /**
