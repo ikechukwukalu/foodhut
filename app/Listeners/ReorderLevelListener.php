@@ -26,7 +26,7 @@ class ReorderLevelListener implements ShouldQueue
      */
     public function handle(ReorderLevel $event): void
     {
-        if ($event->ingredient->isMerchantNotifiedForReorder($event))
+        if ($event->ingredient->isMerchantNotifiedForReorder())
         {
             return;
         }

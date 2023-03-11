@@ -20,14 +20,19 @@ composer install
 cp .env.example .env
 php artisan key:generate
 php artisan migrate --seed
-php artisan cache:clear
-php artisan queue:work
 ```
 
 ### Run development server
 
 ```shell
 php artisan serve
+```
+
+### Run queue worker
+
+```shell
+php artisan cache:clear
+php artisan queue:work
 ```
 
 ### Run tests

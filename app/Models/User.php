@@ -43,13 +43,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function setIsMerchantAttribute($value)
-    {
-        $this->attributes['is_merchant'] = false;
-    }
-
     public function scopeMerchant(Builder $query): void
     {
         $query->where('is_merchant', false);
+    }
+
+    public function setIsMerchantAttribute($value)
+    {
+        $this->attributes['is_merchant'] = false;
     }
 }

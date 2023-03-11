@@ -28,7 +28,7 @@ class Merchant extends User
 
     public function order(): HasMany
     {
-        return $this->hasMany(Order::class, 'merchant_id');
+        return $this->hasMany(Order::class, 'user_id');
     }
 
     public function ingredients(): HasMany
