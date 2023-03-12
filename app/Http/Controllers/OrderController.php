@@ -13,11 +13,13 @@ class OrderController extends Controller
     /**
      * Product Order.
      *
-     * @header Authorization Bearer {Your key}
+     * @header Authorization Bearer {Your Key}
      *
      * @bodyParam products object[] A product being ordered. Example: [{"product_id": 1, "quantity": 2}]
-     * @bodyParam products.product_id integer required A product being ordered. Example: 1
-     * @bodyParam products.quantity integer required The quantity being ordered. Example: 2
+     * @bodyParam products.0.product_id integer A product being ordered. Example: 1
+     * @bodyParam products.0.quantity integer The quantity being ordered. Example: 2
+     * @bodyParam products.1.product_id integer A product being ordered. Example: 1
+     * @bodyParam products.1.quantity integer The quantity being ordered. Example: 2
      *
      * @response 200 {
      * "status": "success",

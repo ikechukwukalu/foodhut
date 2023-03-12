@@ -23,9 +23,9 @@ class OrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'products' => 'required|array:product_id,quantity',
-            'products.product_id' => 'required|integer|gt:0|exists:products,id',
-            'products.quantity' => 'required|integer|gt:0',
+            'products' => 'required|array',
+            'products.*.product_id' => 'required|integer|gt:0|exists:products,id',
+            'products.*.quantity' => 'required|integer|gt:0',
         ];
     }
     /**
@@ -36,7 +36,7 @@ class OrderRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'products.product_id' => trans('order.no_product'),
+            'products.*.product_id' => trans('order.no_product'),
         ];
     }
 }

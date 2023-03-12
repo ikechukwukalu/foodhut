@@ -19,7 +19,7 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
-      Authorization: 'Bearer {Your key}'
+      Authorization: 'Bearer {Your Key}'
     urlParameters: []
     cleanUrlParameters: []
     queryParameters: []
@@ -33,30 +33,52 @@ endpoints:
           -
             product_id: 1
             quantity: 2
-          -
-            product_id: 1
-            quantity: 2
         type: 'object[]'
         custom: []
-      products.product_id:
-        name: products.product_id
-        description: 'A product being ordered.'
+      'products[].product_id':
+        name: 'products[].product_id'
+        description: ''
         required: true
+        example: 12
+        type: integer
+        custom: []
+      'products[].quantity':
+        name: 'products[].quantity'
+        description: ''
+        required: true
+        example: 19
+        type: integer
+        custom: []
+      products.0.product_id:
+        name: products.0.product_id
+        description: 'A product being ordered.'
+        required: false
         example: 1
         type: integer
         custom: []
-      products.quantity:
-        name: products.quantity
+      products.0.quantity:
+        name: products.0.quantity
         description: 'The quantity being ordered.'
-        required: true
+        required: false
+        example: 2
+        type: integer
+        custom: []
+      products.1.product_id:
+        name: products.1.product_id
+        description: 'A product being ordered.'
+        required: false
+        example: 1
+        type: integer
+        custom: []
+      products.1.quantity:
+        name: products.1.quantity
+        description: 'The quantity being ordered.'
+        required: false
         example: 2
         type: integer
         custom: []
     cleanBodyParameters:
       products:
-        -
-          product_id: 1
-          quantity: 2
         -
           product_id: 1
           quantity: 2

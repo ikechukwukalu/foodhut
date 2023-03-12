@@ -50,7 +50,7 @@ class OrderService
      */
     private static function addOrderToCollection(array $validated): void
     {
-        self::$orderCollection = collect([$validated['products']]);
+        self::$orderCollection = collect($validated['products']);
     }
 
     /**
