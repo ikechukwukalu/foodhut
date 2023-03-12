@@ -24,8 +24,10 @@ class OrderTest extends TestCase
     {
         $postData = [
             'products' => [
-                'product_id' => 0,
-                'quantity' => 0,
+                [
+                    'product_id' => 0,
+                    'quantity' => 0
+                ]
             ]
         ];
 
@@ -44,8 +46,10 @@ class OrderTest extends TestCase
     {
         $postData = [
             'products' => [
-                'product_id' => 1,
-                'quantity' => 2,
+                [
+                    'product_id' => 1,
+                    'quantity' => 2
+                ]
             ]
         ];
 
