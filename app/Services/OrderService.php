@@ -101,6 +101,14 @@ class OrderService
         $row = self::getOrderRow($product);
 
         if (!$ingredients = $product->ingredients()->get()) {
+            /**
+             * This means that an order will fail because
+             * there are no ingredients.
+             *
+             * Here an event can be dispatched to notify the
+             * merchant that an order has failed, also specifying
+             * the reason why it failed.
+             */
             return null;
         }
 
