@@ -35,11 +35,7 @@ class OrderService
             return ['fail', 422, ['message' => trans('order.no_product')]];
         }
 
-        $orders = $products->map(function(Product $product) {
-            return self::processOrder($product);
-        });
-
-        return $orders;
+        return self::getOrders($products);
     }
 
     /**
@@ -185,5 +181,19 @@ class OrderService
         ]);
 
         ReorderLevel::dispatch($ingredient);
+    }
+
+    /**
+     * Process Order.
+     *
+     * @param \Illuminate\Database\Eloquent\Collection $products
+     * @return null
+     * @return \Illuminate\Support\Collection
+     */
+    private static function getOrders(EloquentCollection $products): null|Collection
+    {
+        return $products->map(function(Product $product) {
+            return self::processOrder($product);
+        });
     }
 }

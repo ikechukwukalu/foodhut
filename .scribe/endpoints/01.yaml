@@ -37,7 +37,7 @@ endpoints:
         name: 'products[].product_id'
         description: ''
         required: true
-        example: 12
+        example: 1
         type: integer
         custom: []
       'products[].quantity':
