@@ -20,7 +20,7 @@ class OrderService
     private static Collection $orderCollection;
 
     /**
-     * Handle the request.
+     * Handle The Request.
      *
      * @param  \App\Http\Requests\OrderRequest  $request
      * @return null|array|\Illuminate\Support\Collection
@@ -133,7 +133,7 @@ class OrderService
     }
 
     /**
-     * Get Product Ingredients.
+     * Save Order.
      *
      * @param \App\Models\Product $product
      * @param \bool $status
@@ -192,7 +192,7 @@ class OrderService
     }
 
     /**
-     * Process Order.
+     * Get Orders.
      *
      * @param \Illuminate\Database\Eloquent\Collection $products
      * @return null
