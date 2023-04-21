@@ -95,7 +95,7 @@ jobs:
             sudo chmod -R 777 /tmp/production/foodhut
             cd /tmp/production && git clone https://$PAT@github.com/ikechukwukalu/foodhut.git
             cd /tmp/production/foodhut
-            sudo git checkout production
+            sudo git checkout main
             sudo touch .env
             echo "$DOT_ENV" | sudo tee /tmp/production/foodhut/.env
             composer install
