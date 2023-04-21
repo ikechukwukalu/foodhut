@@ -93,7 +93,7 @@ jobs:
           script: |
             sudo mkdir -p /tmp/production/foodhut
             sudo chmod -R 777 /tmp/production/foodhut
-            cd /tmp/production && git clone git@github.com:monitecture/foodhut.git
+            cd /tmp/production && git clone https://$PAT@github.com/ikechukwukalu/foodhut.git
             cd /tmp/production/foodhut
             sudo git checkout production
             sudo touch .env
