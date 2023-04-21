@@ -98,6 +98,7 @@ jobs:
             sudo mkdir -p $DEPLOY_PATH_PRODUCTION/foodhut
             sudo cp -r /tmp/production/foodhut/* $DEPLOY_PATH_PRODUCTION/foodhut
             sudo rm -r /tmp/production/foodhut
+            cd $DEPLOY_PATH_PRODUCTION/foodhut
             echo "$DOT_ENV" | sudo tee $DEPLOY_PATH_PRODUCTION/foodhut/.env
             sudo chmod -R 0755 $DEPLOY_PATH_PRODUCTION/foodhut
             sudo chmod -R 777 $DEPLOY_PATH_PRODUCTION/foodhut/storage
