@@ -91,7 +91,8 @@ jobs:
             sudo touch .env
             echo "$DOT_ENV" | sudo tee /tmp/production/foodhut/.env
             composer install
-            sudo php artisan migrate --seed --force
+            sudo php artisan migrate:refresh --force
+            sudo php artisan db:seed
             sudo php artisan config:clear
             sudo rm -r $DEPLOY_PATH_PRODUCTION/foodhut-old
             sudo mv $DEPLOY_PATH_PRODUCTION/foodhut $DEPLOY_PATH_PRODUCTION/foodhut-old
