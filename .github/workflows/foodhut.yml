@@ -76,7 +76,7 @@ jobs:
         env:
             DOT_ENV: ${{ secrets.DOT_ENV_PRODUCTION }}
             PAT: ${{ secrets.PAT }}
-            $DEPLOY_PATH_PRODUCTION: ${{ secrets.DEPLOY_PATH_PRODUCTION }}
+            DEPLOY_PATH_PRODUCTION: ${{ secrets.DEPLOY_PATH_PRODUCTION }}
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
