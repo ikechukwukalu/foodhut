@@ -102,4 +102,5 @@ jobs:
             cd $DEPLOY_PATH_PRODUCTION/foodhut
             echo "$DOT_ENV" | sudo tee $DEPLOY_PATH_PRODUCTION/foodhut/.env
             sudo chmod -R 0755 $DEPLOY_PATH_PRODUCTION/foodhut
+            sudo touch $DEPLOY_PATH_PRODUCTION/foodhut/storage/logs/laravel.log
             sudo chmod -R 777 $DEPLOY_PATH_PRODUCTION/foodhut/storage
