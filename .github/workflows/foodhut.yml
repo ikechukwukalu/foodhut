@@ -104,3 +104,5 @@ jobs:
             sudo chmod -R 0755 $DEPLOY_PATH_PRODUCTION/foodhut
             sudo touch $DEPLOY_PATH_PRODUCTION/foodhut/storage/logs/laravel.log
             sudo chmod -R 777 $DEPLOY_PATH_PRODUCTION/foodhut/storage
+            sudo supervisorctl reread && sudo supervisorctl update
+            sudo supervisorctl restart foodhut-laravel:*
