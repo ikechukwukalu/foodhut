@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Str;
-
 return [
 
     /*
@@ -13,7 +11,7 @@ return [
     | to use as your default connection for all database work. Of course
     | you may use many connections at once using the Database library.
     |
-    */
+     */
 
     'default' => env('DB_CONNECTION', 'mysql'),
 
@@ -31,7 +29,7 @@ return [
     | so make sure you have the driver for your particular database of
     | choice installed on your machine before you begin development.
     |
-    */
+     */
 
     'connections' => [
 
@@ -104,7 +102,7 @@ return [
     | your application. Using this information, we can determine which of
     | the migrations on disk haven't actually been run in the database.
     |
-    */
+     */
 
     'migrations' => 'migrations',
 
@@ -117,46 +115,72 @@ return [
     | provides a richer body of commands than a typical key-value system
     | such as APC or Memcached. Laravel makes it easy to dig right in.
     |
-    */
+     */
 
+    /*
     'redis' => [
-        'cluster' => env('REDIS_CLUSTER_ENABLED', true),
+    'cluster' => env('REDIS_CLUSTER_ENABLED', true),
 
-        'client' => env('REDIS_CLIENT', 'predis'),
+    'client' => env('REDIS_CLIENT', 'phpredis'),
 
-        'options' => [
-            'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
-        ],
+    'options' => [
+    'cluster' => env('REDIS_CLUSTER', 'redis'),
+    'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+    ],
 
+    'clusters' => [
+    'default' => [
+    'host' => env('REDIS_HOST', '127.0.0.1'),
+    'password' => env('REDIS_PASSWORD'),
+    'port' => env('REDIS_PORT', '6379'),
+    'database' => env('REDIS_DB', '0'),
+    ],
+    ],
+
+    // 'default' => [
+    //     'scheme' => 'tls', //Fixed AWS Redis connection
+    //     // 'url' => env('REDIS_URL'),
+    //     // 'username' => env('REDIS_USERNAME'),
+    //     'host' => env('REDIS_HOST', '127.0.0.1'),
+    //     'password' => env('REDIS_PASSWORD'),
+    //     'port' => env('REDIS_PORT', '6379'),
+    //     'database' => env('REDIS_DB', '0'),
+    // ],
+
+    // 'cache' => [
+    //     // 'url' => env('REDIS_URL'),
+    //     // 'username' => env('REDIS_USERNAME'),
+    //     'host' => env('REDIS_HOST', '127.0.0.1'),
+    //     'password' => env('REDIS_PASSWORD'),
+    //     'port' => env('REDIS_PORT', '6379'),
+    //     'database' => env('REDIS_CACHE_DB', '1'),
+    // ],
+
+    ],
+     */
+    'redis' => [
+        'client' => 'predis',
+        'cluster' => env('REDIS_CLUSTER', false),
         'clusters' => [
             'default' => [
-                'host' => env('REDIS_HOST', '127.0.0.1'),
-                'password' => env('REDIS_PASSWORD'),
-                'port' => env('REDIS_PORT', '6379'),
-                'database' => env('REDIS_DB', '0'),
+                [
+                    'scheme' => env('REDIS_SCHEME', 'tcp'),
+                    'host' => env('REDIS_HOST', 'localhost'),
+                    'password' => env('REDIS_PASSWORD', null),
+                    'port' => env('REDIS_PORT', 6379),
+                    'database' => env('REDIS_DATABASE', 0),
+                ],
+            ],
+            'options' => [ // Clustering specific options
+                'cluster' => 'redis', // This tells Redis Client lib to follow redirects (from cluster)
             ],
         ],
-
-        // 'default' => [
-        //     'scheme' => 'tls', //Fixed AWS Redis connection
-        //     // 'url' => env('REDIS_URL'),
-        //     // 'username' => env('REDIS_USERNAME'),
-        //     'host' => env('REDIS_HOST', '127.0.0.1'),
-        //     'password' => env('REDIS_PASSWORD'),
-        //     'port' => env('REDIS_PORT', '6379'),
-        //     'database' => env('REDIS_DB', '0'),
-        // ],
-
-        // 'cache' => [
-        //     // 'url' => env('REDIS_URL'),
-        //     // 'username' => env('REDIS_USERNAME'),
-        //     'host' => env('REDIS_HOST', '127.0.0.1'),
-        //     'password' => env('REDIS_PASSWORD'),
-        //     'port' => env('REDIS_PORT', '6379'),
-        //     'database' => env('REDIS_CACHE_DB', '1'),
-        // ],
-
+        'options' => [
+            'parameters' => [ // Parameters provide defaults for the Connection Factory
+                'password' => env('REDIS_PASSWORD', null), // Redirects need PW for the other nodes
+                'scheme' => env('REDIS_SCHEME', 'tcp'), // Redirects also must match scheme
+            ],
+        ],
     ],
 
 ];
