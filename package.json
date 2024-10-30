@@ -10,6 +10,6 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "snyk-php-plugin": "^1.9.4"
+        "snyk-php-plugin": "^1.10.0"
     }
 }
